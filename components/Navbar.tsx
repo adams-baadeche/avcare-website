@@ -61,9 +61,9 @@ export default function Navbar() {
             <Image
               src="/avcare-logo.png"
               alt="AvCare"
-              width={130}
-              height={40}
-              className="h-9 md:h-10 w-auto object-contain"
+              width={160}
+              height={48}
+              className="h-8 sm:h-9 md:h-10 w-auto object-contain max-w-[110px] sm:max-w-[130px] md:max-w-[160px]"
               priority
             />
           </a>
@@ -98,17 +98,18 @@ export default function Navbar() {
           </nav>
 
           {/* ── Right Controls ── */}
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-2 md:gap-4">
 
             {/* Language switcher */}
             <div className="relative">
               <button
                 onClick={(e) => { e.stopPropagation(); setLangOpen(v => !v); }}
-                className="flex items-center gap-1.5 px-3 py-2 rounded-lg text-sm font-medium transition-colors hover:bg-gray-50"
+                className="flex items-center gap-1.5 px-2.5 py-2 md:px-3 rounded-lg text-sm font-medium transition-colors hover:bg-gray-50"
                 style={{ color: langOpen ? "var(--brand)" : "var(--text-secondary)" }}
               >
-                <Globe className="w-4 h-4" />
-                <span>{LOCALES[locale]}</span>
+                <Globe className="w-4 h-4 shrink-0" />
+                {/* show locale code only on sm+ to avoid crowding on 320px */}
+                <span className="hidden sm:inline">{LOCALES[locale]}</span>
               </button>
 
               <AnimatePresence>
@@ -186,8 +187,9 @@ export default function Navbar() {
             {/* Hamburger */}
             <button
               onClick={() => setMobileOpen(v => !v)}
-              className="md:hidden p-2 rounded-lg transition-colors"
+              className="md:hidden flex items-center justify-center w-9 h-9 rounded-lg transition-colors hover:bg-gray-50"
               style={{ color: "var(--text-secondary)" }}
+              aria-label="Toggle menu"
             >
               {mobileOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
             </button>
@@ -206,23 +208,27 @@ export default function Navbar() {
             className="md:hidden overflow-hidden border-t"
             style={{ borderColor: "var(--border-subtle)" }}
           >
-            <div className="container-max py-3 flex flex-col gap-0.5">
+            <div className="container-max py-4 flex flex-col gap-1">
               {links.map(link => (
                 <a
                   key={link.href}
                   href={link.href}
                   onClick={() => setMobileOpen(false)}
-                  className="px-3 py-2.5 rounded-xl text-sm font-medium transition-colors"
+                  className="px-4 py-3 rounded-xl text-sm font-medium transition-colors"
                   style={{ color: "var(--text-secondary)" }}
+                  onMouseEnter={e => (e.currentTarget.style.background = "var(--surface-2)")}
+                  onMouseLeave={e => (e.currentTarget.style.background = "transparent")}
                 >
                   {link.label}
                 </a>
               ))}
-              <div className="pt-2 mt-1 border-t" style={{ borderColor: "var(--border-subtle)" }}>
+              <div className="pt-3 mt-2 border-t" style={{ borderColor: "var(--border-subtle)" }}>
                 <a
-                  href="#download"
+                  href="/app-release.apk"
+                  download
                   onClick={() => setMobileOpen(false)}
-                  className="btn-primary w-full justify-center mt-1"
+                  className="btn-primary w-full justify-center"
+                  style={{ minHeight: "48px" }}
                 >
                   <Download className="w-4 h-4" />
                   {t("download")}
