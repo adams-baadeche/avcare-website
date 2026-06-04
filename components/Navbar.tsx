@@ -56,18 +56,10 @@ export default function Navbar() {
         <div className="flex items-center justify-between h-16 md:h-[68px]">
 
           {/* ── Logo ── */}
-          <a href="#" className="shrink-0 flex items-center gap-2">
-            <span
-              className="font-extrabold text-xl tracking-tight"
-              style={{ color: "var(--brand)" }}
-            >
-              Av
-            </span>
-            <span
-              className="font-extrabold text-xl tracking-tight"
-              style={{ color: "var(--text-primary)" }}
-            >
-              Care
+          <a href="#" className="shrink-0 flex items-center">
+            <span className="font-extrabold text-xl tracking-tight">
+              <span style={{ color: "var(--brand)" }}>AVC</span>
+              <span style={{ color: "var(--text-primary)" }}>are</span>
             </span>
           </a>
 
@@ -122,7 +114,7 @@ export default function Navbar() {
                     animate={{ opacity: 1, y: 0, scale: 1 }}
                     exit={{ opacity: 0, y: 8, scale: 0.96 }}
                     transition={{ duration: 0.16, ease: "easeOut" }}
-                    className="absolute top-full right-0 mt-2 p-1.5 bg-white rounded-2xl min-w-[170px] z-50 flex flex-col gap-0.5"
+                    className="absolute top-full right-0 mt-2 p-1.5 bg-white rounded-2xl w-[160px] z-50 flex flex-col gap-0.5"
                     style={{ 
                       boxShadow: "0 12px 32px -4px rgba(0, 0, 0, 0.08), 0 4px 16px -4px rgba(0, 0, 0, 0.04)", 
                       border: "1px solid var(--border-subtle)" 
