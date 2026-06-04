@@ -1,12 +1,9 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
 import { NextIntlClientProvider } from "next-intl";
-import { getMessages, getTranslations } from "next-intl/server";
+import { getMessages } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
 import "../globals.css";
-
-const inter = Inter({ subsets: ["latin", "latin-ext"] });
 
 type Locale = "en" | "fr" | "ar";
 
@@ -20,7 +17,6 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
   const { locale } = await params;
-  const t = await getTranslations({ locale, namespace: "hero" });
 
   const titles: Record<string, string> = {
     en: "AVCARE — Your Stroke Recovery Companion",
