@@ -5,7 +5,6 @@ import { useTranslations, useLocale } from "next-intl";
 import { useRouter, usePathname } from "next/navigation";
 import { Menu, X, Globe, Download } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
-import Image from "next/image";
 
 const LOCALES: Record<string, string> = { en: "EN", fr: "FR", ar: "AR" };
 const LOCALE_LABELS: Record<string, string> = { en: "English", fr: "Français", ar: "العربية" };
@@ -57,15 +56,19 @@ export default function Navbar() {
         <div className="flex items-center justify-between h-16 md:h-[68px]">
 
           {/* ── Logo ── */}
-          <a href="#" className="shrink-0 flex items-center">
-            <Image
-              src="/avcare-logo.png"
-              alt="AvCare"
-              width={160}
-              height={48}
-              className="h-8 sm:h-9 md:h-10 w-auto object-contain max-w-[110px] sm:max-w-[130px] md:max-w-[160px]"
-              priority
-            />
+          <a href="#" className="shrink-0 flex items-center gap-2">
+            <span
+              className="font-extrabold text-xl tracking-tight"
+              style={{ color: "var(--brand)" }}
+            >
+              Av
+            </span>
+            <span
+              className="font-extrabold text-xl tracking-tight"
+              style={{ color: "var(--text-primary)" }}
+            >
+              Care
+            </span>
           </a>
 
           {/* ── Desktop Nav ── */}
