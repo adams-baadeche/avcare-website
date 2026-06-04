@@ -57,18 +57,15 @@ export default function Navbar() {
         <div className="flex items-center justify-between h-16 md:h-[68px]">
 
           {/* ── Logo ── */}
-          <a href="#" className="flex items-center gap-3 shrink-0 group">
-            <div className="w-10 h-10 rounded-xl overflow-hidden shrink-0 shadow-sm border border-gray-100">
-              <Image
-                src="/avcare-logo.png"
-                alt="AvCare"
-                width={40} height={40}
-                className="w-full h-full object-contain"
-              />
-            </div>
-            <p className="font-extrabold text-base tracking-tight" style={{ color: "var(--brand)" }}>
-              AvCare
-            </p>
+          <a href="#" className="shrink-0 flex items-center">
+            <Image
+              src="/avcare-logo.png"
+              alt="AvCare"
+              width={130}
+              height={40}
+              className="h-9 md:h-10 w-auto object-contain"
+              priority
+            />
           </a>
 
           {/* ── Desktop Nav ── */}
